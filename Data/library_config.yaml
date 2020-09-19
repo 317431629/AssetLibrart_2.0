@@ -1,0 +1,65 @@
+CATEGORY:
+- category:
+  - category: []
+    code: man
+    name: "人类"
+    parent: character
+  - category: []
+    code: monster
+    name: "怪物类"
+    parent: character
+  - category: []
+    code: mecha
+    name: "机甲类"
+    parent: character
+  code: character
+  name: "角色"
+- category:
+  - category:
+    - code: tree
+      name: "树"
+      parent: props/plant
+    - code: glass
+      name: "草"
+      parent: props/plant
+    - code: flower
+      name: "花"
+      parent: props/plant
+    code: plant
+    name: "植物"
+    parent: props
+  - category:
+    - code: house
+      name: "房屋"
+      parent: props/building
+    - code: brige
+      name: "桥梁"
+      parent: props/building
+    - code: publish
+      name: "公共设施"
+      parent: props/building
+    code: building
+    name: "建筑"
+    parent: props
+  - category: []
+    code: trans
+    name: "交通工具"
+    parent: props
+  code: props
+  name: "道具"
+- category:
+  - category: []
+    code: forest
+    name: "森林"
+    parent: scenes
+  - category: []
+    code: city
+    name: "城市"
+    parent: scenes
+  - category: []
+    code: village
+    name: "村庄"
+    parent: scenes
+  code: scenes
+  name: "场景"
+ROOT_PATH: !!python/unicode 'D:/Library'
