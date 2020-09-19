@@ -4,12 +4,12 @@ import PySide2 as Qtegg
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
-from widget.screen_shot import screen_grab
+from LibWidget.screen_shot import screen_grab
 
 
 class ThumbnailWidget(QWidget):
     """
-    Thumbnail widget that provides screen capture functionality
+    Thumbnail LibWidget that provides screen capture functionality
     _get_thumbnail_path() can return the screen path  C:/..../Temp/******.png
     """
 
@@ -143,7 +143,7 @@ class ThumbnailWidget(QWidget):
             self.thumbnail = pm_map
 
     def _update_ui(self):
-        # maximum size of thumbnail is widget geom:
+        # maximum size of thumbnail is LibWidget geom:
         thumbnail_geom = self.geometry()
         thumbnail_geom.moveTo(0, 0)
         scale_contents = False

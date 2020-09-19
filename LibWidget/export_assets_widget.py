@@ -6,14 +6,14 @@
 import dayu_widgets as dy
 from PySide2 import QtWidgets
 from PySide2 import QtCore
-from Libs import package
-from Libs import File
+from LibPackages import package
+from LibPackages import File
 
 
 class PublishInformation(QtWidgets.QWidget):
     def __init__(self):
         super(PublishInformation, self).__init__()
-        self.lib_data = File.File(package.get("Data/library_config.yaml")).read_data_from_file()["CATEGORY"]
+        self.lib_data = File.File(package.get("LibData/library_config.yaml")).read_data_from_file()["CATEGORY"]
         self.setObjectName("PublishInformation")
         self.mainLayout = QtWidgets.QVBoxLayout(self)
         self.mainLayout.setContentsMargins(0, 0, 0, 0)

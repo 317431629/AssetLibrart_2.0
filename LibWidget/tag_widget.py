@@ -7,8 +7,8 @@ import dayu_widgets as dy
 from PySide2 import QtWidgets
 from PySide2 import QtCore
 from PySide2 import QtGui
-from Libs import package
-from Libs import File
+from LibPackages import package
+from LibPackages import File
 from random import random
 
 
@@ -17,7 +17,7 @@ class TagWidget(QtWidgets.QWidget):
 
     def __init__(self):
         super(TagWidget, self).__init__()
-        self.tag_data = File.File(package.get("Data/tag_data.yaml")).read_data_from_file()
+        self.tag_data = File.File(package.get("LibData/tag_data.yaml")).read_data_from_file()
         self.MainLayout = QtWidgets.QVBoxLayout(self)
         self.MainLayout.setContentsMargins(0, 0, 0, 0)
         self.split = QtWidgets.QSplitter()
@@ -105,7 +105,7 @@ class Tag(QtWidgets.QWidget):
         self.setMinimumWidth(100)
         self.setMaximumWidth(100)
         self.Avatar = dy.MAvatar()
-        self.Avatar.set_dayu_image(QtGui.QPixmap(package.get("Icon/tag_small.png")))
+        self.Avatar.set_dayu_image(QtGui.QPixmap(package.get("LibIcon/tag_small.png")))
 
         self.Label = dy.MLabel(name).strong()
 

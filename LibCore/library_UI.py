@@ -5,17 +5,17 @@
 
 import dayu_widgets as dy
 import os
-from Libs import package
-from Libs import File
-from widget import info_widget
-from widget import listview
-from widget import fileview
-from widget.screen.screen_shot_widget import ScreenShot
-from widget import export_assets_widget
-from widget import assets_introduction
-from widget import toolBar
-from widget import tag_widget
-from widget import menu
+from LibPackages import package
+from LibPackages import File
+from LibWidget import info_widget
+from LibWidget import listview
+from LibWidget import fileview
+from LibWidget.screen.screen_shot_widget import ScreenShot
+from LibWidget import export_assets_widget
+from LibWidget import assets_introduction
+from LibWidget import toolBar
+from LibWidget import tag_widget
+from LibWidget import menu
 from PySide2 import QtWidgets
 from PySide2 import QtCore
 from PySide2 import QtGui
@@ -36,13 +36,13 @@ class LibraryUI(QtWidgets.QMainWindow):
         UI界面
         """
         super(LibraryUI, self).__init__()
-        self.config_file = File.File(package.get("Data/library_config.yaml"))
+        self.config_file = File.File(package.get("LibData/library_config.yaml"))
         self.config = self.config_file.read_data_from_file()
 
         self.setWindowTitle("Library Tool")
         self.setGeometry(150, 50, 1600, 900)
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint | QtCore.Qt.FramelessWindowHint)
-        self.iconPath = package.get("Icon")
+        self.iconPath = package.get("LibIcon")
         self._root_path = None
         self.reset_library()
         self.mainWidget = QtWidgets.QWidget(self)
@@ -59,7 +59,7 @@ class LibraryUI(QtWidgets.QMainWindow):
         self.projectCombobox = dy.MComboBox()
         self.projectCombobox.setMaximumWidth(100)
 
-        project_data = File.File(package.get("Data/Project_data.yaml")).read_data_from_file()
+        project_data = File.File(package.get("LibData/Project_data.yaml")).read_data_from_file()
         project_menu = dy.MMenu()
         project_menu.set_data(project_data)
         self.projectCombobox.set_menu(project_menu)
@@ -83,7 +83,7 @@ class LibraryUI(QtWidgets.QMainWindow):
 
         self.searchLayout = QtWidgets.QHBoxLayout()
         self.listSearchLine = dy.MLineEdit().search()
-        self.tagButton = dy.MPushButton("", QtGui.QPixmap(package.get("Icon/tag.png"))).warning()
+        self.tagButton = dy.MPushButton("", QtGui.QPixmap(package.get("LibIcon/tag.png"))).warning()
         self.tagButton.setMinimumWidth(60)
 
         self.ListScrollArea = QtWidgets.QScrollArea()
@@ -108,14 +108,14 @@ class LibraryUI(QtWidgets.QMainWindow):
         self.dragLayout = QtWidgets.QHBoxLayout()
         self.zbDragButton = dy.MDragFileButton()
         self.zbDragButton.setFixedSize(120, 120)
-        self.zbDragButton.set_dayu_svg(package.get("Icon/Zbrush.png"))
+        self.zbDragButton.set_dayu_svg(package.get("LibIcon/Zbrush.png"))
         self.zbDragButton.setText("")
         self.zbDragButton.setIconSize(QtCore.QSize(1080, 1080))
         self.zbDragButton.set_dayu_filters([".ZBR", ".ZTL", ".ZPR"])
         self.spDragButton = dy.MDragFileButton("")
         self.spDragButton.setFixedSize(120, 120)
         self.spDragButton.set_dayu_filters([".spp"])
-        self.spDragButton.set_dayu_svg(package.get("Icon/substance_Icon.png"))
+        self.spDragButton.set_dayu_svg(package.get("LibIcon/substance_Icon.png"))
 
         self.textureDragButton = dy.MDragFolderButton()
         self.textureDragButton.setText("")
@@ -268,19 +268,19 @@ class LoginAvatar(dy.MAvatar):
     def __init__(self, icon_path=None):
         super(LoginAvatar, self).__init__()
         self.menu = menu.Menu(self)
-        menu_data = {"Login": package.get("Icon/login.svg"),
-                     "Logout": package.get("Icon/logout.svg"),
-                     "Set Root Path": package.get("Icon/tree_view.svg"),
-                     "导入资产": package.get("Icon/import.svg"),
+        menu_data = {"Login": package.get("LibIcon/login.svg"),
+                     "Logout": package.get("LibIcon/logout.svg"),
+                     "Set Root Path": package.get("LibIcon/tree_view.svg"),
+                     "导入资产": package.get("LibIcon/import.svg"),
                      }
         self.menu.add_menu(menu_data)
 
         self.iconPath = icon_path
-        self.set_dayu_image(QtGui.QPixmap(package.get("Icon/shezhi_mian.png")))
+        self.set_dayu_image(QtGui.QPixmap(package.get("LibIcon/shezhi_mian.png")))
 
     def mousePressEvent(self, event):
         super(LoginAvatar, self).mousePressEvent(event)
-        self.set_dayu_image(QtGui.QPixmap(package.get("Icon/shezhi_mian.png")))
+        self.set_dayu_image(QtGui.QPixmap(package.get("LibIcon/shezhi_mian.png")))
         if event.button() == QtCore.Qt.LeftButton:
             self.menu.close()
             self.menu.show()
@@ -290,7 +290,7 @@ class LoginAvatar(dy.MAvatar):
 
     def mouseReleaseEvent(self, event):
         super(LoginAvatar, self).mouseReleaseEvent(event)
-        self.set_dayu_image(QtGui.QPixmap(package.get("Icon/shezhi.png")))
+        self.set_dayu_image(QtGui.QPixmap(package.get("LibIcon/shezhi.png")))
 
     def login(self):
         """
@@ -320,7 +320,7 @@ class InfoAvatar(dy.MAvatar):
     left_chilcked = QtCore.Signal()
     def __init__(self, icon_path=None):
         super(InfoAvatar, self).__init__()
-        self.set_dayu_image(QtGui.QPixmap(package.get("Icon/info_fill.svg")))
+        self.set_dayu_image(QtGui.QPixmap(package.get("LibIcon/info_fill.svg")))
 
     def mousePressEvent(self, event):
         super(InfoAvatar, self).mousePressEvent(event)
@@ -341,17 +341,17 @@ class MyMenu(QtWidgets.QWidget):
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
         self.loginButton = dy.MPushButton("Login",
-                                               icon=dy.qt.MIcon(package.get("Icon/login.svg"))).tiny()
+                                               icon=dy.qt.MIcon(package.get("LibIcon/login.svg"))).tiny()
         self.loginButton.setMaximumWidth(100)
         self.logoutButton = dy.MPushButton("Logout",
-                                             icon=dy.qt.MIcon(package.get("Icon/logout.png"))).tiny()
+                                             icon=dy.qt.MIcon(package.get("LibIcon/logout.png"))).tiny()
         self.logoutButton.setMaximumWidth(100)
         self.setRootPath = dy.MPushButton("Set Root Path",
-                                          icon=dy.qt.MIcon(package.get("Icon/tree_view.svg"))).tiny()
+                                          icon=dy.qt.MIcon(package.get("LibIcon/tree_view.svg"))).tiny()
         self.setRootPath.setMaximumWidth(100)
 
         self.importButton = dy.MPushButton("导入资产",
-                                           icon=dy.qt.MIcon(package.get("Icon/import.jpg"))).tiny()
+                                           icon=dy.qt.MIcon(package.get("LibIcon/import.jpg"))).tiny()
 
         self.importButton.setMaximumWidth(100)
         self.set_theme()

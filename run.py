@@ -9,7 +9,7 @@ TOOL_PATH = "//10.168.30.2/LocalShare/library"
 sys.path.append(PYTHON_PATH)
 sys.path.append(TOOL_PATH)
 
-from Core import library
+from LibCore import library
 
 tool = library.LibraryTool()
 tool.show()

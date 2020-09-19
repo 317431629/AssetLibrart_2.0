@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from Libs import package
+from LibPackages import package
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
@@ -10,7 +10,7 @@ class FileSystemModel(QFileSystemModel):
     def __init__(self, parent=None):
         super(FileSystemModel, self).__init__()
         self._parent = parent
-        self.iconPath = package.get("Icon")
+        self.iconPath = package.get("LibIcon")
         self.setFilter(QDir.Dirs | QDir.NoDotAndDotDot)
 
     def columnCount(self, *args, **kwargs):

@@ -85,7 +85,7 @@ class Card(dy.MMeta):
         return self.menu
 
     def set_project(self, item_list):
-        items = File.File(package.get("Data/project_data.yaml").replace("\\", "/")).read_data_from_file()
+        items = File.File(package.get("LibData/project_data.yaml").replace("\\", "/")).read_data_from_file()
         project_data = QtWidgets.QInputDialog().getItem(self, "Get item", "Project:", items, 0, False)[0]
         for item in item_list:
             item.menu.set_project(project_data)

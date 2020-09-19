@@ -8,7 +8,7 @@ import tempfile
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
-from widget.screen import screen_grab
+from LibWidget.screen import screen_grab
 import os
 
 
@@ -145,7 +145,7 @@ class ScreenShot(QFrame):
             self.screenButton.setText("")
 
     def _update_ui(self):
-        # maximum size of thumbnail is widget geom:
+        # maximum size of thumbnail is LibWidget geom:
         thumbnail_geom = self.geometry()
         thumbnail_geom.moveTo(0, 0)
         scale_contents = False

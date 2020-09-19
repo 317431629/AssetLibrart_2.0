@@ -8,7 +8,7 @@ from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 from PySide2.QtGui import *
 from dayu_widgets import MTreeView
-from widget import filemodel
+from LibWidget import filemodel
 
 reload(filemodel)
 
@@ -247,8 +247,8 @@ class FolderWidget(QTreeView):
 
     def set_style_sheet(self):
         self.setStyleSheet("QTreeView::branch:has-children:!has-siblings:closed, "
-                           "QTreeView::branch:closed:has-children:has-siblings{border-image: none; image: url('D:/ToolBox_Project/library/Icon/vline.png');}"
+                           "QTreeView::branch:closed:has-children:has-siblings{border-image: none; image: url('D:/ToolBox_Project/library/LibIcon/vline.png');}"
                            "QTreeView::branch:open:has-children:!has-siblings,"
-                           "QTreeView::branch:open:has-children:has-siblings{border-image: none; image: url('D:/ToolBox_Project/library/Icon/vline.png');}"
+                           "QTreeView::branch:open:has-children:has-siblings{border-image: none; image: url('D:/ToolBox_Project/library/LibIcon/vline.png');}"
                            )
 

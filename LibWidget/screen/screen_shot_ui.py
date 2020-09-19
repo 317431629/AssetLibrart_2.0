@@ -3,7 +3,7 @@ from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from dayu_widgets import MTheme
-from widget.screen_shot.screen_shot_widget import ScreenShotButton
+from LibWidget.screen_shot.screen_shot_widget import ScreenShotButton
 # import resource
 
 
@@ -104,10 +104,10 @@ class window(QMainWindow):
         super(window, self).__init__()
 
         self.main_layout = QHBoxLayout(self)
-        # self.widget = QWidget()
+        # self.LibWidget = QWidget()
         self.Ui_ThumbnailWidget = Ui_ThumbnailWidget(self)
 
-        # self.main_layout.addWidget(self.widget)
+        # self.main_layout.addWidget(self.LibWidget)
 
 
 if __name__ == "__main__":

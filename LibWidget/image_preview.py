@@ -3,7 +3,7 @@
 # @FileName     :library_UI.py
 # @Author       :LiuYang
 
-from Libs import package
+from LibPackages import package
 from PySide2 import QtWidgets
 from PySide2 import QtCore
 from PySide2 import QtGui
@@ -54,8 +54,8 @@ class CloseLabel(QtWidgets.QLabel):
         super(CloseLabel, self).__init__()
         self.setParent(parent)
         self.parent = parent
-        self.nor_pixmap = QtGui.QPixmap(package.get("Icon/close_02.png")).scaled(30, 30)
-        self.hight_pixmap = QtGui.QPixmap(package.get("Icon/close_01.png")).scaled(30, 30)
+        self.nor_pixmap = QtGui.QPixmap(package.get("LibIcon/close_02.png")).scaled(30, 30)
+        self.hight_pixmap = QtGui.QPixmap(package.get("LibIcon/close_01.png")).scaled(30, 30)
         self.width = self.nor_pixmap.width()
         self.height = self.nor_pixmap.height()
 

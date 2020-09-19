@@ -6,11 +6,11 @@
 import os
 import re
 import dayu_widgets as dy
-from Libs import package
+from LibPackages import package
 from PySide2 import QtWidgets
 from PySide2 import QtCore
 from PySide2 import QtGui
-from widget import image_preview
+from LibWidget import image_preview
 
 
 class Introduction(QtWidgets.QWidget):
@@ -97,7 +97,7 @@ class Introduction(QtWidgets.QWidget):
         """
         image_path = os.path.join(self.root_path, image_path)
         if not os.path.exists(image_path):
-            image_path = package.get("Icon/app-maya.png")
+            image_path = package.get("LibIcon/app-maya.png")
         self.previewLabel.setPixmap(image_path)
 
     def set_preview_name(self, name):

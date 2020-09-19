@@ -6,8 +6,8 @@
 import dayu_widgets as dy
 import time
 import functools
-from Libs import package
-from Libs import File
+from LibPackages import package
+from LibPackages import File
 from PySide2 import QtWidgets
 from PySide2 import QtGui
 from PySide2 import QtCore
@@ -24,7 +24,7 @@ class ToolBar(QtWidgets.QWidget):
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.setMaximumWidth(65)
 
-        icon_data = File.File(package.get("Data/library_config.yaml")).read_data_from_file()["CATEGORY"]
+        icon_data = File.File(package.get("LibData/library_config.yaml")).read_data_from_file()["CATEGORY"]
 
         self.toolbar = ToPBar(icon_data)
         self.categoryBar = CategoryWidget()

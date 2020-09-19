@@ -14,10 +14,10 @@ try:
 except ImportError:
     pass
 
-from Core import library_UI
-from Libs import File
-from Libs import package
-from widget import login_ui
+from LibCore import library_UI
+from LibPackages import File
+from LibPackages import package
+from LibWidget import login_ui
 from functools import wraps
 from functools import partial
 from PySide2 import QtCore
@@ -256,7 +256,7 @@ class LibraryTool(library_UI.LibraryUI):
         if file_suffix not in [".ZBR", ".ZTL", ".ZPR"]:
             dy.MMessage.error("Place Drag Zbrush File", self)
             raise TypeError("The file suffix {0} is not recognized".format(file_suffix))
-        self.zbDragButton.set_dayu_svg(package.get("Icon/Zbrush_done.png"))
+        self.zbDragButton.set_dayu_svg(package.get("LibIcon/Zbrush_done.png"))
         self.informationWidget.zbCheckBox.setChecked(True)
         self.informationWidget.zbLabel.setText(os.path.split(zb_file)[-1])
         self.zb_path = zb_file
@@ -267,7 +267,7 @@ class LibraryTool(library_UI.LibraryUI):
         if file_suffix not in [".spp"]:
             dy.MMessage.error("Place Drag Substance Paint File", self)
             raise TypeError("The file suffix {0} is not recognized".format(file_suffix))
-        self.spDragButton.set_dayu_svg(package.get("Icon/substance_done.png"))
+        self.spDragButton.set_dayu_svg(package.get("LibIcon/substance_done.png"))
         self.informationWidget.spCheckBox.setChecked(True)
         self.informationWidget.spLabel.setText(os.path.split(sp_file)[-1])
         self.sp_path = sp_file
@@ -499,7 +499,7 @@ class Card(dy.MMeta):
                 item.setStyleSheet("background-color:rgb(50,50,50)")
 
     def set_project(self, item_list):
-        items = File.File(package.get("Data/project_data.yaml").replace("\\", "/")).read_data_from_file()
+        items = File.File(package.get("LibData/project_data.yaml").replace("\\", "/")).read_data_from_file()
         project_data = QtWidgets.QInputDialog().getItem(self, "Get item", "Project:", items, 0, False)[0]
         for item in item_list:
             item.menu.set_project(project_data)
@@ -559,22 +559,22 @@ class CardMenu(QtWidgets.QWidget):
         self.mainLayout = QtWidgets.QVBoxLayout(self)
 
         self.importMayaButton = dy.MPushButton(u"导入Maya文件",
-                                               icon=dy.qt.MIcon(package.get("Icon/app-maya.png"))).tiny()
+                                               icon=dy.qt.MIcon(package.get("LibIcon/app-maya.png"))).tiny()
 
         self.importZbButton = dy.MPushButton(u"打开Zbrush文件",
-                                             icon=dy.qt.MIcon(package.get("Icon/Zbrush.png"))).tiny()
+                                             icon=dy.qt.MIcon(package.get("LibIcon/Zbrush.png"))).tiny()
 
         self.importSpButton = dy.MPushButton(u"打开Sp文件",
-                                             icon=dy.qt.MIcon(package.get("Icon/SP_Icon.png"))).tiny()
+                                             icon=dy.qt.MIcon(package.get("LibIcon/SP_Icon.png"))).tiny()
 
         self.openDirButton = dy.MPushButton(u"打开资产文件夹",
-                                            icon=dy.qt.MIcon(package.get("Icon/folder_fill.svg"))).tiny()
+                                            icon=dy.qt.MIcon(package.get("LibIcon/folder_fill.svg"))).tiny()
 
         self.removeCardButton = dy.MPushButton(u"从资产库删除资产",
-                                               icon=dy.qt.MIcon(package.get("Icon/trash_line.svg"))).tiny().warning()
+                                               icon=dy.qt.MIcon(package.get("LibIcon/trash_line.svg"))).tiny().warning()
 
         self.setProjectButton = dy.MPushButton(u"设置项目",
-                                               icon=dy.qt.MIcon(package.get("Icon/gongju_an.svg"))).tiny()
+                                               icon=dy.qt.MIcon(package.get("LibIcon/gongju_an.svg"))).tiny()
         self.setProjectButton.hide()
 
         self.set_theme()

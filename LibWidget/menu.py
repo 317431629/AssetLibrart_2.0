@@ -48,7 +48,7 @@ class Menu(QtWidgets.QWidget):
     def set_style_sheet(self, theme="dark"):
         """
         设置 styleSheet
-        :param theme:  (str) theme of dy widget
+        :param theme:  (str) theme of dy LibWidget
         :return:
         """
 
